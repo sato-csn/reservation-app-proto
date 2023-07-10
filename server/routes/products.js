@@ -1,7 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const Product = require('../model/product')
+const cors = require('cors'); 
 
+router.use(cors({
+  origin: 'http://localhost:4200' // allow only this origin
+}));
+ 
 
 router.get('', function(req, res){
   Product.find({}).then(foundProducts => {
